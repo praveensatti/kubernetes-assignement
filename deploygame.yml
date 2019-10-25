@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gameoflife-deploy
+spec:
+  replicas: 2
+  strategy: rollingUpdate
+  selector:
+    matchLabels:
+      app: gameoflife
+  template:
+    metadata:
+      name: gameoflife
+      labels:
+        app: gameoflife
+    spec:
+      containers: 
+      - image: praveensatti/gameoflife-tomcat
+        name: gameoflife
+        ports:
+        - containerPort: 8080
+        volumeMounts: 
+        - mountPath: /usr/local/tomcat/webapps/
+          name: webapps-volume
+      volumes:
+        - name: webapps-volume
+          persistentVolumeClaim:
+              claimName: pcgame
