@@ -5,7 +5,6 @@ metadata:
   name: gameoflife-deploy
 spec:
   replicas: 2
-  strategy: rollingUpdate
   selector:
     matchLabels:
       app: gameoflife

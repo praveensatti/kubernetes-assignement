@@ -6,5 +6,6 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  accessModes: ReadWriteOnce
+  accessModes: 
+  - ReadWriteOnce
   storageClassName: fast
